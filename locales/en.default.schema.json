@@ -52,6 +52,7 @@
     "carousel_navigation": "Carousel navigation",
     "carousel_pagination": "Carousel pagination",
     "cart_features": "Cart features",
+    "checkout_discount_message": "Discount / promo message",
     "colors": "Colors",
     "collection_page": "Collection page",
     "complementary_products": "Complementary products must be set up using the Search & Discovery app. [Learn more](https://help.shopify.com/manual/online-store/search-and-discovery)",
@@ -201,6 +202,7 @@
     "carousel_hover_behavior_not_supported": "\"Carousel\" hover is not supported when \"Carousel\" type is selected at the section level",
     "carousel_layout_on_mobile": "Carousel is used on mobile",
     "checkout_buttons": "Allows buyers to check out faster and can improve conversion. [Learn more](https://help.shopify.com/manual/online-store/dynamic-checkout)",
+    "checkout_discount_banner": "Shown below accelerated checkout (product page) and in the cart drawer. Leave blank to hide.",
     "custom_heading": "Custom heading",
     "custom_liquid": "Add app snippets or other code to create advanced customizations. [Learn more](https://shopify.dev/docs/api/liquid)",
     "edit_presets_in_theme_settings": "Edit presets in [theme settings](/editor?context=theme&category=typography)",
@@ -777,6 +779,7 @@
     // Text case setting for typography (uppercase/lowercase)
     "case": "Case",
     "checkout_buttons": "Accelerated checkout buttons",
+    "checkout_discount_banner_text": "Message at checkout and cart",
     "collection": "Collection",
     "collection_count": "Collection count",
     "collection_list": "Collections",

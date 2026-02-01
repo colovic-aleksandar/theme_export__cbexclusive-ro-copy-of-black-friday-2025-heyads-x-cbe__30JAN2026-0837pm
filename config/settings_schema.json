@@ -1764,13 +1764,13 @@
       },
       {
         "type": "header",
-        "content": "Discount / promo message"
+        "content": "t:content.checkout_discount_message"
       },
       {
         "type": "textarea",
         "id": "checkout_discount_banner_text",
-        "label": "Message at checkout and cart",
-        "info": "Shown below accelerated checkout (product page) and in the cart drawer. Leave blank to hide.",
+        "label": "t:settings.checkout_discount_banner_text",
+        "info": "t:info.checkout_discount_banner",
         "default": "Pay by card and use code DISCOUNT10 for 10% off."
       },
       {
