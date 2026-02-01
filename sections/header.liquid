@@ -469,6 +469,25 @@
     }
   }
 
+  /* Bottom-align desktop header menu links */
+  @media screen and (min-width: 750px) {
+    .header__column:has(header-menu) {
+      align-items: flex-end;
+    }
+
+    .header__column:has(header-menu) .menu-list__list {
+      align-items: flex-end;
+    }
+
+    .header__column:has(header-menu) .menu-list__link {
+      align-items: flex-end;
+    }
+
+    .header__column:has(header-menu) .menu-list__link {
+      line-height: 1;
+    }
+  }
+
   .header__columns {
     /* Three column layout */
     --header-left: 1fr;
