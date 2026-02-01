@@ -18,6 +18,8 @@
   style="
     {% render 'spacing-style', settings: section.settings %}
     {% render 'gap-style', value: section.settings.gap %}
+    --padding-block-start: 48px;
+    --padding-block-end: 48px;
   "
 >
   <div class="section-resource-list__header">
@@ -329,7 +331,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 48
     },
     {
       "type": "range",
@@ -339,7 +341,7 @@
       "max": 100,
       "step": 1,
       "unit": "px",
-      "default": 0
+      "default": 48
     }
   ],
   "presets": [
