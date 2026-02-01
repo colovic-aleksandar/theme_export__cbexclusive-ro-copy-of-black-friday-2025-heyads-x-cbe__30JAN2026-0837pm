@@ -33,9 +33,9 @@
     {{ form_obj | payment_button }}
   {% endif %}
 
-  <p class="tax-note accelerated-checkout__discount-note" role="note">
-    Pay by card and use code <strong>DISCOUNT10</strong> for 10% off.
-  </p>
+  {% if settings.checkout_discount_banner_text != blank %}
+    {% render 'checkout-discount-banner', class: 'accelerated-checkout__discount-note' %}
+  {% endif %}
 </div>
 
 {% stylesheet %}

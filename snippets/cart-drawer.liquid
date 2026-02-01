@@ -111,11 +111,11 @@
             <div
               class="cart-drawer__summary"
             >
-              <div class="cart-drawer__discount-banner" role="note">
-                <p class="tax-note">
-                  Pay by card and use code <strong>DISCOUNT10</strong> for 10% off.
-                </p>
-              </div>
+              {% if settings.checkout_discount_banner_text != blank %}
+                <div class="cart-drawer__discount-banner" role="note">
+                  {% render 'checkout-discount-banner' %}
+                </div>
+              {% endif %}
               {% render 'cart-summary' %}
             </div>
           </div>

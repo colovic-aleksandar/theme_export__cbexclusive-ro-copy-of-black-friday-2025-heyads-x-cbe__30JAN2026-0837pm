@@ -1,0 +1,18 @@
+{%- doc -%}
+  Shared UI component for the discount/promo message shown at accelerated checkout (product page) and in the cart drawer.
+  Text is editable in Theme settings > Cart > "Message at checkout and cart".
+
+  @param {string} [text] - Override text (defaults to settings.checkout_discount_banner_text)
+  @param {string} [class] - Extra CSS class(es) for the paragraph (e.g. accelerated-checkout__discount-note)
+{%- enddoc -%}
+
+{% liquid
+  assign banner_text = text | default: settings.checkout_discount_banner_text
+  assign extra_class = class | default: ''
+%}
+
+{% if banner_text != blank %}
+  <p class="tax-note checkout-discount-banner__text {{ extra_class | strip }}" role="note">
+    {{ banner_text | newline_to_br }}
+  </p>
+{% endif %}
