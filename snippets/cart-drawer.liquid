@@ -111,6 +111,11 @@
             <div
               class="cart-drawer__summary"
             >
+              <div class="cart-drawer__discount-banner" role="note">
+                <p class="tax-note">
+                  Pay by card and use code <strong>DISCOUNT10</strong> for 10% off.
+                </p>
+              </div>
               {% render 'cart-summary' %}
             </div>
           </div>
@@ -178,4 +183,15 @@
     bottom: 0;
     z-index: 1;
   }
+
+  .cart-drawer__discount-banner {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / 0.15);
+    border-inline-start-width: 4px;
+    border-inline-start-color: rgb(var(--color-foreground-rgb) / 0.35);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: rgb(var(--color-foreground-rgb) / 0.04);
+  }
+
 {% endstylesheet %}
