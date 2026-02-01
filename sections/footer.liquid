@@ -52,6 +52,18 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--footer-gap);
+    align-items: start;
+  }
+
+  /* Prevent grid blowout: allow items to shrink within their column */
+  .footer-content > * {
+    min-width: 0;
+  }
+
+  /* Constrain images so they don't overflow their grid cell */
+  .footer-content .image-block,
+  .footer-content .image-block__image {
+    max-width: 100%;
   }
 
   @media screen and (min-width: 750px) and (max-width: 989px) {
@@ -76,6 +88,14 @@
 
     .footer-content--isolated-grid-item-desktop > :last-child {
       grid-column: 1 / -1;
+      /* Full-width row (e.g. payment logos): prevent clipping */
+      overflow: visible;
+      min-width: unset;
+    }
+
+    /* Payment/logos row: prevent images from being squashed or clipped */
+    .footer-content--isolated-grid-item-desktop > .group-block:last-child .image-block {
+      flex-shrink: 0;
     }
   }
 {% endstylesheet %}

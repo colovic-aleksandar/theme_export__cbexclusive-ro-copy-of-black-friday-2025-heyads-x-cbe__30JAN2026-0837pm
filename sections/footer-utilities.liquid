@@ -140,15 +140,16 @@
       }
     }
 
-    /* Exactly 1 items cases: */
-    /* A => A left */
-    /* Example: Policy left */
-    .utilities:has(.footer-utilities__text:first-child:nth-last-child(1)) {
+    /* Exactly 1 item: center (e.g. copyright only) */
+    .utilities:has(.footer-utilities__text:first-child:nth-last-child(1)),
+    .utilities:has(> *:only-child) {
       grid-template-columns: 1fr;
-      justify-content: start;
+      justify-items: center;
 
-      .footer-utilities__text:nth-child(1) {
-        justify-self: start;
+      .footer-utilities__text:nth-child(1),
+      > * {
+        justify-self: center;
+        text-align: center;
       }
     }
 
