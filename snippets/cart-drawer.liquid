@@ -111,6 +111,11 @@
             <div
               class="cart-drawer__summary"
             >
+              {% if settings.checkout_discount_banner_text != blank %}
+                <div class="cart-drawer__discount-banner" role="note">
+                  {% render 'checkout-discount-banner' %}
+                </div>
+              {% endif %}
               {% render 'cart-summary' %}
             </div>
           </div>
@@ -178,4 +183,15 @@
     bottom: 0;
     z-index: 1;
   }
+
+  .cart-drawer__discount-banner {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / 0.15);
+    border-inline-start-width: 4px;
+    border-inline-start-color: rgb(var(--color-foreground-rgb) / 0.35);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: rgb(var(--color-foreground-rgb) / 0.04);
+  }
+
 {% endstylesheet %}

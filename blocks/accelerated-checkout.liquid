@@ -32,9 +32,23 @@
   {% if product != blank and form_obj != blank %}
     {{ form_obj | payment_button }}
   {% endif %}
+
+  {% if settings.checkout_discount_banner_text != blank %}
+    {% render 'checkout-discount-banner', class: 'accelerated-checkout__discount-note' %}
+  {% endif %}
 </div>
 
 {% stylesheet %}
+  .accelerated-checkout__discount-note {
+    margin: 0.75rem 0 0;
+    padding: 0.9rem 1rem;
+    border: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / 0.15);
+    border-inline-start-width: 4px;
+    border-inline-start-color: rgb(var(--color-foreground-rgb) / 0.35);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: rgb(var(--color-foreground-rgb) / 0.04);
+  }
+
   .accelerated-checkout-block[data-shopify-visual-preview] {
     width: 300px;
   }
