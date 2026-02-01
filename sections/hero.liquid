@@ -453,6 +453,8 @@
     --hero-border-style: {{ section.settings.border }};
     --hero-border-width: {{ section.settings.border_width }}px;
     --hero-border-opacity: {{ section.settings.border_opacity }}%;
+    --hero-margin-top: {{ section.settings.margin_top | default: 0 }}px;
+    --hero-margin-bottom: {{ section.settings.margin_bottom | default: 0 }}px;
     --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
     {% if section.settings.section_height == 'custom' %}
       --hero-min-height: {{ section.settings.section_height_custom }}svh;
@@ -548,6 +550,11 @@
   .hero {
     position: relative;
     min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
+    /* Use padding (not margin) so the spacing keeps the page background consistent */
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: var(--hero-margin-top, 0px);
+    padding-bottom: var(--hero-margin-bottom, 0px);
   }
 
   .hero[data-shopify-visual-preview] {
@@ -1137,6 +1144,32 @@
         }
       ],
       "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "force_16_9_aspect_ratio",
+      "label": "Force 16:9 aspect ratio (when height is Auto)",
+      "default": false
     },
     {
       "type": "range",
