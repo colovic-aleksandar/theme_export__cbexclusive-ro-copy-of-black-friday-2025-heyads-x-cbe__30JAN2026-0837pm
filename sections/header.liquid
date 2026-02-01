@@ -483,6 +483,7 @@
     grid-template-areas: 'left center right';
     grid-gap: var(--gap-xl);
     grid-template-columns: var(--header-template-columns);
+    align-items: center;
 
     /* If menu is in center column */
     &:has(.header__column--center header-menu) {
@@ -584,6 +585,15 @@
     padding-block: calc(2 * var(--header-padding));
     margin-inline: calc(-1 * var(--gap-xl) / 2);
     padding-inline: calc(var(--gap-xl) / 2);
+  }
+
+  @media screen and (min-width: 750px) {
+    .header__row
+      .menu-list__list-item:where(:not([slot='overflow']))
+      > :is(.menu-list__link[aria-haspopup], .menu-list__link, button.menu-list__link) {
+      margin-block: 0;
+      padding-block: 0;
+    }
   }
 
   /* Set header paddings based on height setting */
