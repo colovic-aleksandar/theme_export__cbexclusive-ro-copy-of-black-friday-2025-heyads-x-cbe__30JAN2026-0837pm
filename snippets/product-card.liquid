@@ -145,7 +145,41 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
-    {{ children }}
+    {%- comment -%}
+      The visible product title is normally rendered by the `product-title` block inside `children`.
+      This snippet always includes a visually-hidden title for accessibility, but if the title block
+      was removed we inject a visible fallback *between* the image (gallery) and the price.
+    {%- endcomment -%}
+
+    {% liquid
+      assign children_to_render = children
+
+      unless children contains 'ref="productTitleLink"'
+        capture fallback_title_markup
+          if onboarding
+            echo '<div class="product-card__fallback-title">'
+            echo 'placeholders.product_title' | t
+            echo '</div>'
+          else
+            echo '<a class="product-card__fallback-title" ref="productTitleLink" href="'
+            echo variant_to_link.url
+            echo '">'
+            echo product.title
+            echo '</a>'
+          endif
+        endcapture
+
+        if children contains '<product-price'
+          assign price_token = '<product-price'
+          assign replacement = fallback_title_markup | append: price_token
+          assign children_to_render = children | replace_first: price_token, replacement
+        else
+          assign children_to_render = children | append: fallback_title_markup
+        endif
+      endunless
+    %}
+
+    {{ children_to_render }}
   </div>
 </product-card>
 {%- if settings.transition_to_main_product -%}
@@ -160,6 +194,23 @@
 
   .product-card__placeholder-image svg {
     height: 100%;
+  }
+
+  .product-card__fallback-title {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow-wrap: anywhere;
+    margin-block: var(--padding-xs);
+    font-size: var(--font-size--body-md);
+    line-height: var(--line-height--body, normal);
+  }
+
+  /* Ensure price aligns left within product cards */
+  .product-card__content product-price.text-block {
+    --horizontal-alignment: flex-start;
+    --text-align: left;
+    text-align: left;
   }
 
   @media screen and (max-width: 749px) {
